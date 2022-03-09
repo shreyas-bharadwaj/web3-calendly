@@ -1,0 +1,78 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 64px;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.header {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.bio {
+  text-align: center;
+  color: gray;
+  margin-top: 16px;
+}
+
+.buttons {
+  text-align: center;
+  color: gray;
+  margin-top: 16px;
+  padding: 10px;
+}
+
+.waveButton {
+  cursor: pointer;
+  margin-top: 16px;
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  font-weight: 600;
+  background: blue;
+  
+}
+
+.connectWalletButton {
+  margin-top: 16px;
+  padding: 20px;
+  border: 0;
+  border-radius: 5px;
+}
+
+mark {
+  background-color: orangered;
+  color: white;
+  font-weight: 600;
+  padding: 2px;
+}
+
+b {
+  color: black;
+  font-weight: 550;
+}
+footer {
+  display: block;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  max-width: 600px;
+}
+
+.avaxlogo {
+  padding-left: 5px;
+  size: 8px;
+}
