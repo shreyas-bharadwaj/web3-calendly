@@ -217,7 +217,7 @@ const App = () => {
        </div>
       )}
         {currentAccount && 
-        (<Button variant="contained" onClick={wave}>Submit Request</Button>
+        (<Button variant="outlined" onClick={wave} >Submit Request</Button>
 
       )}
         <Typography variant="overline">
@@ -227,10 +227,10 @@ const App = () => {
         </Typography>
       {allWaves.slice(0).reverse().slice(0,5).map((wave, index) => {
           return (
-            <Card key={index} sx={{bgcolor: lightBlue[500-(100*index)], boxShadow: 5, m:0.5}}>
+            <Card key={index} sx={{bgcolor: '#fafafa', boxShadow: 5, m:0.5}}>
               <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: blueGrey[500] }} aria-label="recipe">
+          <Avatar sx={{ bgcolor: "#06c3ff", color:"white" }} aria-label="recipe">
             {wave.address.slice(2,5)}
           </Avatar>
         }
@@ -241,9 +241,9 @@ const App = () => {
         }
       />
               <CardContent>
-              <Typography color="text.secondary">Address: <Link href="https://testnet.snowtrace.io/">
+              <Typography variant='subtitle2' color="text.secondary">Address: <Link href="https://testnet.snowtrace.io/">
                 {wave.address}</Link></Typography>
-              <Typography color="text.secondary">Time: {wave.timestamp.toString()}</Typography>
+              <Typography variant='subtitle2' color="text.secondary">Time: {wave.timestamp.toString()}</Typography>
               </CardContent>
                   
             </Card>
