@@ -13,8 +13,7 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { red } from '@mui/material/colors';
-import { lightBlue } from '@mui/material/colors';
+import { red, pink, lightBlue, blueGrey } from '@mui/material/colors';
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -149,6 +148,11 @@ const App = () => {
     try {
       const { ethereum } = window;
 
+      if(val=="") {
+        alert("Meeting Topic is required!");
+        return false;
+      }
+
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
@@ -213,7 +217,7 @@ const App = () => {
        </div>
       )}
         {currentAccount && 
-        (<Button variant="contained" onClick={wave}>Let's chat!</Button>
+        (<Button variant="contained" onClick={wave}>Submit Request</Button>
 
       )}
         <Typography variant="overline">
@@ -223,16 +227,15 @@ const App = () => {
         </Typography>
       {allWaves.slice(0).reverse().slice(0,5).map((wave, index) => {
           return (
-            <Card key={index} sx={{bgcolor: lightBlue[50],                   boxShadow: 10,
-}}>
+            <Card key={index} sx={{bgcolor: lightBlue[500-(100*index)], boxShadow: 5, m:0.5}}>
               <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: lightBlue[500] }} aria-label="recipe">
-            SB
+          <Avatar sx={{ bgcolor: blueGrey[500] }} aria-label="recipe">
+            {wave.address.slice(2,5)}
           </Avatar>
         }
         title={
-          <Typography variant="subtitle1">
+          <Typography variant="subtitle2">
         {wave.message}
           </Typography>
         }
