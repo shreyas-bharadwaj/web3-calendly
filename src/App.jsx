@@ -14,20 +14,16 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { red, pink, lightBlue, blueGrey } from '@mui/material/colors';
-
+  
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
   const [val, setVal] = useState("");
   const [allWaves, setAllWaves] = useState([]);
-  const contractAddress = "0x6ee07c0F6b55Cf31C118be26CC0a2a7bB1B1FB60";
+  const contractAddress = "0xd364d5b7C44C8F25B7f4A669D492EaF9cE90F06c";
   const contractABI = abi.abi;
   const chainId = "0xA869";
   const networkName = "Avalanche FUJI C-Chain";
-  let topic = "";
 
-  function resetTopic(){
-    topic="";
-  }
   const checkIfWalletIsConnected = async () => {
     try {
       const { ethereum } = window;
@@ -112,17 +108,7 @@ const App = () => {
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
-
-        /*
-         * Call the getAllWaves method from your Smart Contract
-         */
         const waves = await wavePortalContract.getAllWaves();
-
-
-        /*
-         * We only need address, timestamp, and message in our UI so let's
-         * pick those out
-         */
         let wavesCleaned = [];
         waves.forEach(wave => {
           wavesCleaned.push({
@@ -165,7 +151,7 @@ const App = () => {
         /*
         * Execute the actual wave from your smart contract
         */
-        const waveTxn = await wavePortalContract.wave(val);
+        const waveTxn = await wavePortalContract.wave(val, {value: ethers.utils.parseEther("1.0")});
         console.log('you just sent a meeting request with the following topic: %s', val)
         console.log("Mining...", waveTxn.hash);
         await waveTxn.wait();
@@ -245,7 +231,6 @@ const App = () => {
                 {wave.address}</Link></Typography>
               <Typography variant='subtitle2' color="text.secondary">Time: {wave.timestamp.toString()}</Typography>
               </CardContent>
-                  
             </Card>
           )
         })}
