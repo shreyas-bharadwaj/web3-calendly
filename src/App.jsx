@@ -130,6 +130,23 @@ const App = () => {
     }
   }
 
+  const withdraw = async () => {
+     try {
+        const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const wavePortalContract = new ethers.Contract(contractAddress, contractABI, signer);
+       console.log("withdrawing to owner account");
+       const withdrawTxn = await wavePortalContract.withdraw();
+      }
+     }
+       catch (error) {
+         console.log(error);
+       }
+        
+  }
+
   const wave = async () => {
     try {
       const { ethereum } = window;
